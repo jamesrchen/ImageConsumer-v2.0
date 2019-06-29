@@ -27,7 +27,7 @@ fs.readdir("./cmd/", (err, files) => {
 
     let jsfiles = files.filter(f => f.split(".").pop() === "js");
     if (jsfiles.length <= 0) {
-        console.log("No commands to load!");
+        console.log("ERROR: No commands to load!");
         return;
     }
 
@@ -52,9 +52,11 @@ const allowed = ['Neutral'];                                //
 //////////////////////////////////////////////////////////////
 
 
-client.on('ready', () => {
+client.on('ready', async () => {
     console.log(`\nReady to roll!`)
-    console.log(`Logged in as ${client.user.tag}!\n`);
+    console.log(`Logged in as ${client.user.tag}!`);
+    console.log(`Serving in ${client.guilds.size} server(s) for ${client.users.size} user(s)!`);
+    console.log(`Invite link: ${await client.generateInvite(["ADMINISTRATOR"])}`)
 });
 
 client.on('message', async msg => {
