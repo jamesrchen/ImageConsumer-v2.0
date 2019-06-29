@@ -17,7 +17,7 @@ const app = express();
 app.use(express.static('./public'));
 
 const PREFIX = process.env.prefix;
-const TOKEN = proccess.env.token;
+const TOKEN = process.env.token;
 
 client.commands = new Discord.Collection();
 
@@ -40,15 +40,15 @@ fs.readdir("./cmd/", (err, files) => {
     });
 })
 
-//CONFIGURATION
+//                      CONFIGURATION
 //////////////////////////////////////////////////////////////
-// Drawing - safe for work drawings (including anime)
-// Hentai - hentai and pornographic drawings
-// Neutral - safe for work neutral images
-// Porn - pornographic images, sexual acts
-// Sexy - sexually explicit images, not pornography
-const allowed = ['Neutral'];
-//The default doesn't have Drawings because I hate art.
+// Drawing - safe for work drawings (including anime)       //
+// Hentai - hentai and pornographic drawings                //
+// Neutral - safe for work neutral images                   //
+// Porn - pornographic images, sexual acts                  //
+// Sexy - sexually explicit images, not pornography         //
+const allowed = ['Neutral'];                                //
+//The default doesn't have Drawings because I hate art.     //
 //////////////////////////////////////////////////////////////
 
 
