@@ -24,7 +24,7 @@ module.exports.run = async (client, message, args) => {
             try {
                 role = await message.guild.createRole({
                     name: "Muted",
-                    color: "#000000",
+                    color: "#111111",
                     permissions: []
                 });
                 message.guild.channels.forEach(async (channel, id) => {
