@@ -1,27 +1,31 @@
 require('dotenv').config();
+
+// IMAGE RECOGNITION REQUIREMENTS //
 const url = require('url');
 const {
     createCanvas,
     loadImage
 } = require('canvas')
 const fetch = require('node-fetch');
-const Discord = require('discord.js');
-const client = new Discord.Client();
-const fs = require("fs");
 const uid = require("uid");
-const nsfwjs = require('nsfwjs');
 const path = require('path');
+const nsfwjs = require('nsfwjs');
 var model = null;
 const express = require("express");
 const app = express();
 app.use(express.static('./public'));
 
+// MAIN REQUIREMENTS //
+const Discord = require('discord.js');
+const client = new Discord.Client();
+const fs = require("fs");
+
+// CONSTANT VARIABLES //
 const PREFIX = process.env.prefix;
 const TOKEN = process.env.token;
 
+// Read ./cmd/ and set the commands
 client.commands = new Discord.Collection();
-
-// Read ./cmd/
 fs.readdir("./cmd/", (err, files) => {
     if (err) console.error(err);
 
@@ -40,7 +44,7 @@ fs.readdir("./cmd/", (err, files) => {
     });
 })
 
-//                      CONFIGURATION
+//                      CONFIGURATION                       //
 //////////////////////////////////////////////////////////////
 // Drawing - safe for work drawings (including anime)       //
 // Hentai - hentai and pornographic drawings                //
@@ -51,7 +55,7 @@ const allowed = ['Neutral'];                                //
 //The default doesn't have Drawings because I hate art.     //
 //////////////////////////////////////////////////////////////
 
-
+// Run these when the bot is ready
 client.on('ready', async () => {
     console.log(`\nReady to roll!`)
     console.log(`Logged in as ${client.user.tag}!`);
@@ -59,8 +63,10 @@ client.on('ready', async () => {
     console.log(`Invite link: ${await client.generateInvite(["ADMINISTRATOR"])}`)
 });
 
+// Run these when a message was sent
 client.on('message', async msg => {
 
+    // Setting the arguments (--command arg[0] arg[1] arg[2] ... arg[n])
     let messageArray = msg.content.split(/\s+/g);
     let command = messageArray[0];
     let args = messageArray.slice(1);
@@ -96,6 +102,7 @@ client.on('message', async msg => {
 
 });
 
+// Log in the client
 client.login(TOKEN);
 
 app.listen(3000, async function () {
