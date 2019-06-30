@@ -74,6 +74,8 @@ client.on('message', async msg => {
     let cmd = client.commands.get(command.slice(PREFIX.length))
     if (cmd) cmd.run(client, msg, args);
     
+    if (msg.author.bot) return;
+
     // IMAGE RECOGNITION //
     if (msg.attachments.array().length != 0) {
         for (let i = 0; i < msg.attachments.array().length; i++) {
