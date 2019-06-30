@@ -11,8 +11,11 @@ module.exports.run = async (client, message, args) => {
         const voteTime = parseInt(arguments[1], 10) * 1000;
         const voteArg = arguments.slice(2).join(' ');
 
-        // If the time is a string, stop.
+        // If the time is a string or there are no time specified, stop.
         if (isNaN(voteTime)) return message.channel.send("Invalid time specified!");
+
+        // If there are no voting reason, stop.
+        if (voteArg === "") return message.channel.send("No title specified!");
 
         // Send the vote message.
         let msg = await message.channel.send(`Vote for: **${voteArg}**`);
