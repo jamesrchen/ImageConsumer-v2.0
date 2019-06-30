@@ -1,6 +1,6 @@
 {
   "name": "imageconsumer",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Yummy",
   "main": "index.js",
   "scripts": {
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/unknownguy2002/ImageConsumer.git"
+    "url": "git+https://github.com/unknownguy2002/ImageConsumer-v2.0.git"
   },
   "author": "unknownguy2002, Asil, Franklin-The-Turtle",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/unknownguy2002/ImageConsumer/issues"
+    "url": "https://github.com/unknownguy2002/ImageConsumer-v2.0/issues"
   },
-  "homepage": "https://github.com/unknownguy2002/ImageConsumer#readme",
+  "homepage": "https://github.com/unknownguy2002/ImageConsumer-v2.0#readme",
   "dependencies": {
     "@tensorflow/tfjs": "^1.2.2",
     "canvas": "^2.5.0",
