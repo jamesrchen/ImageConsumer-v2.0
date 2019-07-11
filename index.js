@@ -51,7 +51,7 @@ fs.readdir("./cmd/", (err, files) => {
 // Neutral - safe for work neutral images                   //
 // Porn - pornographic images, sexual acts                  //
 // Sexy - sexually explicit images, not pornography         //
-const allowed = ['Neutral'];                                //
+let allowed = ['Neutral'];                                  //
 //The default doesn't have Drawings because I hate art.     //
 //////////////////////////////////////////////////////////////
 
@@ -75,6 +75,16 @@ client.on('message', async msg => {
     if (cmd) cmd.run(client, msg, args);
     
     if (msg.author.bot) return;
+
+    let preferences = JSON.parse(fs.readFileSync("./preferences.json", "utf8"));
+
+    if (!preferences[message.guild.id]){
+        preferences[message.guild.id] = {
+            preferences: botconfig.preference
+        };
+    };
+
+    let allowed = [preferences[message.guild.id].preferences];
 
     // IMAGE RECOGNITION //
     if (msg.attachments.array().length != 0) {
